@@ -1,15 +1,15 @@
 <?php
 /* Plugin Name: Chart.js Embed
- * Plugin URI:
- * Description: test
+ * Plugin URI: https://github.com/psmagicman/chartjs-embed
+ * Description: Embeds the Chart.js library made by Nick Downie
  * Version: 1.0
- * Author: null
- * Author URI: 
- * Author Email:
+ * Author: Julien Law
+ * Author URI: https://github.com/psmagicman/chartjs-embed
+ * Author Email: julien.law@ubc.ca
  * License:
  *
  *
- *  Copyright 2013 TODO (email@domain.com)
+ *  Copyright 2013 Julien Law (julien.law@ubc.ca)
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License, version 2, as 
@@ -33,17 +33,21 @@
  	function __construct() {
 
  		add_action( 'init', array( __CLASS__, 'register_script' ) );
- 		add_action( 'wp_footer', array( __CLASS__, 'print_script' ) );
+        add_action( 'wp_head', array( __CLASS__, 'header_print_script' ) );
+ 		add_action( 'wp_footer', array( __CLASS__, 'footer_print_script' ) );
  	}
 
  	public function register_script() {
- 		wp_register_script( 'embed-chart-js', plugins_url( 'js/Chart.min.js', __FILE__ ), array('jquery'), '1.0', true );
+ 		wp_register_script( 'embed-chart-js', plugins_url( 'js/Chart.min.js', __FILE__ ), array('jquery'), '1.0', false );
  		wp_register_script( 'embed-chart-js-json', plugins_url( 'js/component.json', __FILE__ ), array('jquery'), '1.0', true );
  	}
 
- 	public function print_script() {
+    public function header_print_script() {
+        wp_print_scripts( 'embed-chart-js' );
+    }
+
+ 	public function footer_print_script() {
  		wp_print_scripts( 'embed-chart-js-json' );
- 		wp_print_scripts( 'embed-chart-js' );
  	}
 
  }
