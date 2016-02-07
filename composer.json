@@ -1,0 +1,22 @@
+{
+	"name": 		"psmagicman/chartjs-embed",
+	"description": 	"",
+	"keywords": 	[ "wordpress", "plugin" ],
+	"homepage": 	"https://github.com/psmagicman/chartjs-embed",
+	"license": 		"GPLv2",
+
+	"authors": [
+		{
+			"name": 	"Julien Law",
+			"email": 	"julien.law@ubc.ca",
+			"homepage": "https://github.com/psmagicman/chartjs-embed"
+		}
+	],
+
+	"type": "wordpress-plugin",
+
+	"require": {
+		"php": ">=5.3",
+		"composer/installers": "~1.0"
+	}
+}
